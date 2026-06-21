@@ -1,0 +1,234 @@
+.projects {
+  background-color: var(--bg-color);
+  min-height: 100vh;
+  padding: 120px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--border-color);
+  font-family: var(--font-sans);
+  position: relative;
+}
+
+.blob-projects-1 {
+  top: 15%;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  animation-delay: -1s;
+}
+
+.projects-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  z-index: 10;
+  position: relative;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-align: center;
+  margin-bottom: 50px;
+  letter-spacing: -0.5px;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.section-title::after {
+  content: "";
+  width: 50px;
+  height: 4px;
+  background: var(--accent-gradient);
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+/* Glassmorphism Card Effect with floating animation */
+.projects-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-lg);
+  padding: 45px;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.05);
+  transition: var(--transition-smooth);
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.projects-content:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 20px 45px rgba(99, 102, 241, 0.15);
+  background: var(--bg-card-hover);
+}
+
+.project-header h3 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0f172a, #6366f1, #8b5cf6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+  display: inline-block;
+}
+
+.project-description {
+  font-size: 1.08rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 25px;
+}
+
+/* Technology Tags Styling */
+.highlightbox {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0 35px 0;
+}
+
+.tech-tag {
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: var(--transition-smooth);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Interaction Effects */
+.tech-tag:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+}
+
+/* Vivid, Multi-Colour Neon Palette for Tags */
+.Python {
+  background: linear-gradient(45deg, #3776ab, #00c6ff);
+  box-shadow: 0 4px 12px rgba(55, 118, 171, 0.2);
+}
+
+.Mechine {
+  background: linear-gradient(45deg, #8b5cf6, #ec4899);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+}
+
+.Computer {
+  background: linear-gradient(45deg, #06b6d4, #3b82f6);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.2);
+}
+
+.Pose {
+  background: linear-gradient(45deg, #f43f5e, #fb7185);
+  box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+}
+
+/* Project description details bullet list */
+.project-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 0;
+}
+
+.project-details li {
+  position: relative;
+  padding-left: 24px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.project-details li::before {
+  content: "•";
+  color: var(--accent-color);
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  font-size: 1.5rem;
+  position: absolute;
+  left: 4px;
+  top: -4px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .projects {
+    padding: 80px 16px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 35px;
+  }
+
+  .projects-content {
+    padding: 30px 20px;
+    animation: none; /* Disable floating on mobile to optimize performance */
+  }
+
+  .project-header h3 {
+    font-size: 1.45rem;
+  }
+
+  .project-description {
+    font-size: 0.98rem;
+  }
+
+  .highlightbox {
+    justify-content: center;
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .project-details li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .projects {
+    padding: 60px 12px;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+    margin-bottom: 28px;
+  }
+
+  .projects-content {
+    padding: 24px 16px;
+  }
+
+  .project-header h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-description {
+    font-size: 0.92rem;
+  }
+
+  .tech-tag {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+  }
+
+  .project-details li {
+    font-size: 0.88rem;
+  }
+}
