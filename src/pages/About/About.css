@@ -90,6 +90,55 @@
   line-height: 1.6;
 }
 
+/* Social Icons in About Me */
+.about-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.social-icon-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+.social-icon-btn:hover {
+  color: #ffffff;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.25);
+  border-color: var(--border-hover);
+}
+
+.social-icon-btn.github:hover {
+  background: #24292e;
+  border-color: #24292e;
+}
+
+.social-icon-btn.linkedin:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+}
+
+.social-icon-btn.instagram:hover {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-color: transparent;
+}
+
+.social-icon-btn .social-svg {
+  width: 18px;
+  height: 18px;
+  transition: var(--transition-smooth);
+}
+
 /* Image container with Dot Grid & double glowing border */
 .about-image-wrapper {
   flex: 0.8;
@@ -147,6 +196,10 @@
     text-align: center;
     padding: 100px 6%;
     gap: 50px;
+  }
+
+  .about-socials {
+    justify-content: center;
   }
 
   .about-content h2::after {

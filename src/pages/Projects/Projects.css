@@ -80,6 +80,50 @@
   display: inline-block;
 }
 
+/* Project Image Styling */
+.project-image {
+  width: 100%;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  margin-bottom: 25px;
+  border: 1px solid var(--border-color);
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  transition: var(--transition-smooth);
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.project-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.08) 0%,
+    transparent 50%,
+    rgba(139, 92, 246, 0.08) 100%
+  );
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.project-image:hover::after {
+  opacity: 1;
+}
+
+.project-image img {
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.project-image:hover img {
+  transform: scale(1.04);
+}
+
 .project-description {
   font-size: 1.08rem;
   line-height: 1.8;
@@ -133,6 +177,39 @@
 .Pose {
   background: linear-gradient(45deg, #f43f5e, #fb7185);
   box-shadow: 0 4px 12px rgba(244, 63, 94, 0.2);
+}
+
+/* ── Project 2 Card ── */
+.project-card-2 {
+  margin-top: 40px;
+  animation-delay: -3s; /* stagger float relative to Project 1 */
+}
+
+/* Project 2 Tech-Tag Colours */
+.Reactjs {
+  background: linear-gradient(45deg, #61dafb, #3b82f6);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.2);
+}
+
+.Nodejs {
+  background: linear-gradient(45deg, #68a063, #3c873a);
+  box-shadow: 0 4px 12px rgba(60, 135, 58, 0.2);
+}
+
+.Javascript {
+  background: linear-gradient(45deg, #f0db4f, #e6a817);
+  box-shadow: 0 4px 12px rgba(240, 219, 79, 0.2);
+  color: #1a1a2e; /* dark text for legibility on yellow */
+}
+
+.HTML {
+  background: linear-gradient(45deg, #e34f26, #f06529);
+  box-shadow: 0 4px 12px rgba(227, 79, 38, 0.2);
+}
+
+.CSS {
+  background: linear-gradient(45deg, #264de4, #2965f1);
+  box-shadow: 0 4px 12px rgba(38, 77, 228, 0.2);
 }
 
 /* Project description details bullet list */
@@ -199,6 +276,10 @@
   .project-details li {
     font-size: 0.95rem;
   }
+
+  .project-image img {
+    height: 260px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -230,5 +311,9 @@
 
   .project-details li {
     font-size: 0.88rem;
+  }
+
+  .project-image img {
+    height: 200px;
   }
 }

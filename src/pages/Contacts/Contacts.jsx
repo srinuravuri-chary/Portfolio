@@ -1,75 +1,79 @@
-import React from "react";
-import './Contacts.css';
+import React, { useState } from "react";
+import "./Contacts.css";
 
-const Contact = () => {
+const Contacts = () => {
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event) => {
+    event.preventDefault();
+    setResult("Sending...");
+
+    const formData = new FormData(event.target);
+    formData.append(
+      "access_key",
+      "fd69c0d7-123c-4f42-a1cb-d58e730bc9d3"
+    );
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (data.success) {
+      setResult("Message sent successfully!");
+      event.target.reset();
+    } else {
+      setResult("Failed to send message. Please try again.");
+    }
+  };
+
   return (
-    <section className="contact-section" id="contact">
+    <section className="contact" id="contact">
       {/* Background glow circle */}
       <div className="glow-blob primary blob-contact-1"></div>
-      
-      <div className="contact-container animate-fade-up">
-        <h2 className="section-title">Let's Connect</h2>
-        <p className="contact-subtitle">
-          Feel free to reach out to me for project discussions, collaborations,
-          internships, or any professional opportunities.
-        </p>
+
+      <div className="contact-container">
+        <h2 className="section-title">Contact Me</h2>
 
         <div className="contact-grid">
-          {/* Info Details Column */}
-          <div className="contact-info-panel">
-            <h3>Contact Information</h3>
-            <p>
-              I’m always open to meaningful conversations and new ideas. You can directly contact me by clicking on the links below.
+          {/* Left Side: Contact Information Cards */}
+          <div className="contact-info-card">
+            <h3>Let's Connect</h3>
+            <p className="contact-text">
+              Interested in working together or discussing new opportunities? I'm always open to meaningful conversations, exciting projects, and collaborations. Reach out anytime via email or phone. 
             </p>
 
-            <div className="info-items">
-              <div className="info-item">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
-                </div>
-                <div className="info-text">
-                  <strong>Email</strong>
-                  <a href="mailto:srinuravuriiiii@gmail.com">srinuravuriiiii@gmail.com</a>
-                </div>
+            <div className="contact-info-list">
+              <div className="info-box">
+                <span className="label">Email</span>
+                <a href="mailto:srinuravuriiiii@gmail.com">
+                  srinuravuriiiii@gmail.com
+                </a>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div className="info-text">
-                  <strong>Phone</strong>
-                  <a href="tel:+91832861XXXXX">+91 832861*****</a>
-                </div>
+              <div className="info-box">
+                <span className="label">Phone</span>
+                <a href="tel:+918328619809">+91 832861****</a>
               </div>
 
-              <div className="info-item">
-                <div className="info-icon">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <div className="info-text">
-                  <strong>Location</strong>
-                  <span>Tekupalli Road, Khammam</span>
-                </div>
+              <div className="info-box">
+                <span className="label">Location</span>
+                <p>Tekulapalli road, khammam</p>
               </div>
             </div>
           </div>
 
-          {/* Form Column */}
-          <div className="contact-form-panel">
-            <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          {/* Right Side: Message Form */}
+          <div className="contact-form-card">
+            <h3>Send a Message</h3>
+            
+            <form className="contact-form" onSubmit={onSubmit}>
               <div className="form-group">
-                <label htmlFor="contact-name">Your Name</label>
+                <label htmlFor="name">Name</label>
                 <input
-                  id="contact-name"
+                  id="name"
                   type="text"
                   name="name"
                   placeholder="Enter your name"
@@ -78,9 +82,9 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="contact-email">Your Email</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  id="contact-email"
+                  id="email"
                   type="email"
                   name="email"
                   placeholder="Enter your email"
@@ -89,17 +93,25 @@ const Contact = () => {
               </div>
 
               <div className="form-group">
-                <label htmlFor="contact-message">Your Message</label>
+                <label htmlFor="message">Message</label>
                 <textarea
-                  id="contact-message"
+                  id="message"
                   name="message"
-                  rows="5"
+                  rows="4"
                   placeholder="Write your message..."
                   required
-                ></textarea>
+                />
               </div>
 
-              <button type="submit" className="submit-btn">Send Message</button>
+              <button type="submit" className="submit-btn">
+                Send Message
+              </button>
+
+              {result && (
+                <p className={`result-msg ${result.includes("success") ? "success" : result === "Sending..." ? "sending" : "error"}`}>
+                  {result}
+                </p>
+              )}
             </form>
           </div>
         </div>
@@ -108,4 +120,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Contacts;

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Home.css';
-import srinuOg from './srinu_og.png';
+import lucky from "./ravurii.jpeg"
 import Navbar from '../../components/Navbar/Navbar';
 
 function Home() {
@@ -95,7 +95,7 @@ function Home() {
             {/* Glowing Photo Card */}
             <div className="hero-photo-card">
               <div className="photo-inner-border">
-                <img src={srinuOg} alt="Srinu Ravuri" />
+                <img src={lucky } alt="Srinu Ravuri" />
               </div>
             </div>
           </div>
